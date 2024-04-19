@@ -51,7 +51,6 @@ const facialExpressions = {
     eyeWideLeft: 0.5,
     eyeWideRight: 0.5,
     jawOpen: 0.351,
-    mouthFunnel: 1,
     browInnerUp: 1,
   },
   angry: {
@@ -120,7 +119,7 @@ export function Avatar(props) {
     console.log(message);
 
     if (!message) {
-      setAnimation("Idle");
+      setAnimation("Standing Idle");
       return;
     }
     setAnimation(message.animation);
@@ -140,11 +139,13 @@ export function Avatar(props) {
     animations.find((a) => a.name === "Standing Idle") ? "Standing Idle" : animations[0].name // Check if Idle animation exists otherwise use first animation
   );
   useEffect(() => {
-    actions[animation]
-      .reset()
-      .fadeIn(mixer.stats.actions.inUse === 0 ? 0 : 0.5)
-      .play();
-    return () => actions[animation].fadeOut(0.5);
+    if (actions[animation]) {
+      actions[animation]
+        .reset()
+        .fadeIn(mixer.stats.actions.inUse === 0 ? 0 : 0.5)
+        .play();
+      return () => actions[animation].fadeOut(0.5);
+    }
   }, [animation]);
 
   const lerpMorphTarget = (target, value, speed = 0.1) => {
