@@ -1,6 +1,10 @@
-![Video Thumbnail](https://img.youtube.com/vi/EzzcEL_1o9o/maxresdefault.jpg)
+Based on WaWa sensai's Project
 
-[Video tutorial](https://youtu.be/EzzcEL_1o9o)
+Handle using own model 
+
+
+
+
 
 The backend is [here](https://github.com/wass08/r3f-virtual-girlfriend-backend).
 
